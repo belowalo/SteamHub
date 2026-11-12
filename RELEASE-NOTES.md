@@ -1,14 +1,13 @@
-SteamHub 0.1.1 includes the current application changes and the November 11 Steam compatibility repair for build 1794424036.
+SteamHub 0.1.2 replaces the uneven utility-page card grids with a consistent section layout.
 
-- New PowerShell installer/updater: downloads the latest stable release without GitHub sign-in, checks GitHub's SHA-256 digest and all payload files, installs missing Microsoft prerequisites, and creates a desktop shortcut.
-- Installs the reviewed bundled OpenSteamTool runtime only for Steam DLL hashes with reviewed compatibility data. Existing runtime conflicts stop installation; unknown Steam builds receive the app update with a warning.
-- Preserves each PC's profile, provider keys, Lua files and runtime configuration. File updates have verified backups and guarded rollback.
-- Includes the current UI, library artwork and filters, provider fallback, per-game status, guided fix ZIP handling, and region-aware Steam prices. Store region defaults to USA and is configured in Settings.
+- Settings and Tools use full-width rows, with section labels aligned on the left and controls on the right. Narrow windows stack labels above controls.
+- Consistent spacing, dividers and content widths replace disconnected cards and unused grid gaps.
+- Storage and log paths are left-aligned with safe wrapping. Library paths use a compact list, and last-scan dates use a readable local format.
+- Application health uses the same section layout with a compact status and service summary. Shortcut actions follow the same content alignment.
+- Catalog maintenance follows the same section layout. Game artwork grids remain available for browsing the library.
 
-Windows 10/11 x64 is required. Steam must already be installed for runtime setup. No account keys, local profiles or personal Lua files are included. Microsoft installers may request administrator approval. SteamHub builds are unsigned. Existing SteamHub installations are retained; the new desktop shortcut points to the updater-managed copy.
+Includes the November 11 Steam compatibility repair and the existing PowerShell installer/updater. Run the same installer command again to obtain this release. Local profiles, provider keys and Lua files remain on each PC.
 
-Validation: 93 frontend tests and 66 Rust tests passed. The updater's Windows PowerShell 5.1 fixture tests cover fresh install, repeat update, preservation, rollback, changed-file protection, runtime conflicts, unsupported Steam hashes, tampered payloads and archive traversal. The current compatibility metadata was validated against the installed DLLs; Steam reopened its library without the three warning dialogs. Downloads, gameplay and a separate physical PC were not tested.
+Validation: all 93 frontend tests, TypeScript production build, lint and formatting passed. Windows NSIS packaging completed. Settings and Tools were visually checked in the desktop app, and the 960px browser preview showed equal section widths without horizontal overflow. Gameplay and downloads were not tested. No runtime behavior changed in this UI update.
 
-Use **Install-SteamHub.ps1** for online setup, **SteamHub-update.zip** for the updater payload, or **steamhubproduction.zip** for the full manual package. **SteamHub-source.zip** includes corresponding application source and dependency notices. SHA-256 checksums are in **SHA256SUMS.txt**.
-
-The updater runs when invoked. It does not run in the background or generate compatibility data for unknown Steam builds. Future updates require publishing a new reviewed release.
+Windows 10/11 x64 is required. Builds are unsigned. Runtime setup requires an installed, supported Steam build. Unknown Steam builds receive the app update with a compatibility warning. Dependencies and the reviewed runtime are included in the update and production packages; corresponding source and licenses are included with the release.
