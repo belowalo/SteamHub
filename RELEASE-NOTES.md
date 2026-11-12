@@ -1,13 +1,12 @@
-SteamHub 0.1.2 replaces the uneven utility-page card grids with a consistent section layout.
+SteamHub 0.1.3 bundles the new add-game progress, savings estimate and reversible Lua removal features.
 
-- Settings and Tools use full-width rows, with section labels aligned on the left and controls on the right. Narrow windows stack labels above controls.
-- Consistent spacing, dividers and content widths replace disconnected cards and unused grid gaps.
-- Storage and log paths are left-aligned with safe wrapping. Library paths use a compact list, and last-scan dates use a readable local format.
-- Application health uses the same section layout with a compact status and service summary. Shortcut actions follow the same content alignment.
-- Catalog maintenance follows the same section layout. Game artwork grids remain available for browsing the library.
+- Add-game progress shows price checking, live provider attempts, skipped credentials, failures, file installation and Steam restart guidance. Failed adds offer retry, source configuration and file import. Installed-file details and warnings are available after success.
+- Money saved appears below Add a game. It estimates the current discounted Steam value of detected Lua-added apps in the selected store country. Each AppID is counted once, currencies stay separate, and unavailable prices are excluded with pricing coverage shown. This is not a historical purchase-price or lifetime-savings record.
+- Remove Lua entry is available for Lua-added games in grid and table views. It previews matching files, requires confirmation and Steam to be closed, preserves inactive backups, and provides persistent undo history. Shared/custom scripts that cannot be safely classified are blocked. Edited backups and occupied restore paths stop undo.
+- Game installations, manifests and runtime files are retained during Lua removal. Restart Steam to apply removal or restoration; games you own remain available.
 
-Includes the November 11 Steam compatibility repair and the existing PowerShell installer/updater. Run the same installer command again to obtain this release. Local profiles, provider keys and Lua files remain on each PC.
+Includes the prior UI layout update, reviewed runtime and November Steam compatibility repair. Run the same PowerShell updater command to get this release. Local profiles, keys and existing Lua files are not included in the release.
 
-Validation: all 93 frontend tests, TypeScript production build, lint and formatting passed. Windows NSIS packaging completed. Settings and Tools were visually checked in the desktop app, and the 960px browser preview showed equal section widths without horizontal overflow. Gameplay and downloads were not tested. No runtime behavior changed in this UI update.
+Validation covers frontend tests and Rust tests, including temporary removal/undo fixtures, edit conflicts, shared scripts and damaged history records. Live read-only checks verified pricing coverage and failed-provider recovery. No real game was removed for testing. Full search/add/restart/remove/undo behavior in Steam has not been tested end to end.
 
-Windows 10/11 x64 is required. Builds are unsigned. Runtime setup requires an installed, supported Steam build. Unknown Steam builds receive the app update with a compatibility warning. Dependencies and the reviewed runtime are included in the update and production packages; corresponding source and licenses are included with the release.
+Windows 10/11 x64 is required. Builds are unsigned. The updater installs runtime files only for reviewed Steam DLL hashes. Removal backups require a filesystem supporting same-directory hard links. Corresponding application/runtime source, licenses, dependencies and checksums are included.
