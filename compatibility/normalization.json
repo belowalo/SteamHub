@@ -1,0 +1,18 @@
+[
+  {
+    "originalName": "KeyValues_FindOrCreateKey",
+    "runtimeName": "FindOrCreateKey",
+    "originalKey": "0xED5ED0C8",
+    "runtimeKey": "0x45A87956"
+  },
+  {
+    "originalName": "KeyValues_ReadAsBinary",
+    "runtimeName": "ReadAsBinary",
+    "originalKey": "0x2434A8BA",
+    "runtimeKey": "0x40679C34"
+  },
+  {
+    "removedUnusedHook": "GetTopManager",
+    "reason": "Not requested by installed moxuna v1.4.8-fix runtime"
+  }
+]

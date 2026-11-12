@@ -1,0 +1,12 @@
+[
+  {
+    "steamBuild": "1794424036",
+    "steamclientSha256": "ebf46f84606e4dc49ebd551f6621f7ca5c19927d572a49f0aa4925ce9414096c",
+    "steamuiSha256": "5fdf0f7972ed7f6acb3949ec6dcd8a424e607a044a3e992bd3ffe8ebcf4d96f7"
+  },
+  {
+    "steamBuild": "1792618285",
+    "steamclientSha256": "253e0a11a4415b38c78a42f7bdd6ecc426455f06c1ba6453a48090df3142dbbc",
+    "steamuiSha256": "cd9226db4e6c28942df70c22c0475d91fdd62cba5f100baae2d65af57cabb610"
+  }
+]
