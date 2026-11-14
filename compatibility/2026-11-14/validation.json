@@ -1,0 +1,259 @@
+{
+  "patterns": [
+    {
+      "component": "steamclient",
+      "name": "BBuildAndAsyncSendFrame",
+      "rva": "0xD682E0",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "BuildDepotDependency",
+      "rva": "0x4ED110",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "BuildSpawnEnvBlock",
+      "rva": "0xA1C5D0",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "CUtlBufferEnsureCapacity",
+      "rva": "0xD1B3F0",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "CUtlMemoryGrow",
+      "rva": "0xE95C0",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "CheckAppOwnership",
+      "rva": "0xA03A70",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "CloseAppCloud",
+      "rva": "0xA67320",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "ConfigStoreGetBinary",
+      "rva": "0x5EFD90",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "GetAppDataFromAppInfo",
+      "rva": "0x4DE420",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "GetAppIDForCurrentPipe",
+      "rva": "0x9B5660",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "GetOrAddAppData",
+      "rva": "0x4DF790",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "GetPackageInfo",
+      "rva": "0x4DF9F0",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "GetPipeClient",
+      "rva": "0x8C50B0",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "IPCProcessMessage",
+      "rva": "0x8C46C0",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "FindOrCreateKey",
+      "rva": "0xD9EBF0",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "ReadAsBinary",
+      "rva": "0xDA1810",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "LoadDepotDecryptionKey",
+      "rva": "0x5EFD90",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "LoadPackage",
+      "rva": "0x4DAC90",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "MarkLicenseAsChanged",
+      "rva": "0xA100B0",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "OptedInMask",
+      "rva": "0x61B190",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "PchMsgNameFromEMsg",
+      "rva": "0xD4C460",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "ProcessPendingLicenseUpdates",
+      "rva": "0x9FA540",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "RecvPkt",
+      "rva": "0x5D3030",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "SendCallbackToPipe",
+      "rva": "0x9BA900",
+      "unique": true
+    },
+    {
+      "component": "steamclient",
+      "name": "SpawnProcess",
+      "rva": "0xA1E050",
+      "unique": true
+    },
+    {
+      "component": "steamui",
+      "name": "AddProtobufAsBinary",
+      "rva": "0xA41950",
+      "unique": true
+    },
+    {
+      "component": "steamui",
+      "name": "BuildCompleteAppOverviewChange",
+      "rva": "0x634280",
+      "unique": true
+    },
+    {
+      "component": "steamui",
+      "name": "CSteamUIAppControllerRunFrame",
+      "rva": "0x64BA30",
+      "unique": true
+    },
+    {
+      "component": "steamui",
+      "name": "FillInAppOverview",
+      "rva": "0x63B0D0",
+      "unique": true
+    },
+    {
+      "component": "steamui",
+      "name": "GetAppByID",
+      "rva": "0x63D900",
+      "unique": true
+    },
+    {
+      "component": "steamui",
+      "name": "LoadModuleWithPath",
+      "rva": "0x8DD870",
+      "unique": true
+    },
+    {
+      "component": "steamui",
+      "name": "MarkAppChange",
+      "rva": "0x6CF3B0",
+      "unique": true
+    },
+    {
+      "component": "steamui",
+      "name": "RepeatedFieldUint32_Add",
+      "rva": "0x72CAF0",
+      "unique": true
+    },
+    {
+      "component": "steamui",
+      "name": "ShouldShowAppInLibrary",
+      "rva": "0x608E40",
+      "unique": true
+    }
+  ],
+  "ipc": [
+    {
+      "method": "IClientUser.GetSteamID",
+      "vtablePointerMatches": true,
+      "constantsMatch": true
+    },
+    {
+      "method": "IClientUser.GetAppOwnershipTicketExtendedData",
+      "vtablePointerMatches": true,
+      "constantsMatch": true
+    },
+    {
+      "method": "IClientUser.RequestEncryptedAppTicket",
+      "vtablePointerMatches": true,
+      "constantsMatch": true
+    },
+    {
+      "method": "IClientUser.GetEncryptedAppTicket",
+      "vtablePointerMatches": true,
+      "constantsMatch": true
+    },
+    {
+      "method": "IClientUtils.GetAppID",
+      "vtablePointerMatches": true,
+      "constantsMatch": true
+    },
+    {
+      "method": "IClientUtils.GetAPICallResult",
+      "vtablePointerMatches": true,
+      "constantsMatch": true
+    }
+  ],
+  "files": [
+    {
+      "relativePath": "pattern/steamclient/669fa08e259277fbf5a1dfe15ce88afe734e89151194304b44d92f418dcc985b.toml",
+      "sha256": "1dd02ae291697a591fead5a3da200c5b96485fb3aee4f1077d775f6d50622d2c"
+    },
+    {
+      "relativePath": "pattern/steamui/2dfb0a5d50dd90667549cc7d413c7bfb0794c9af4ebaf08bf1cf7d938a11ea93.toml",
+      "sha256": "16fb2095d56bd20e30883475bebfd0e8f43f91355f79d33839ebe1cd26c24103"
+    },
+    {
+      "relativePath": "ipc/steamclient/669fa08e259277fbf5a1dfe15ce88afe734e89151194304b44d92f418dcc985b.toml",
+      "sha256": "f4cb4ee88b91c000d67112f9f56a901aecf6e789cd41e8a76a7171c394b99453"
+    }
+  ],
+  "dllHashes": {
+    "steamclient": "669fa08e259277fbf5a1dfe15ce88afe734e89151194304b44d92f418dcc985b",
+    "steamui": "2dfb0a5d50dd90667549cc7d413c7bfb0794c9af4ebaf08bf1cf7d938a11ea93"
+  },
+  "passed": true
+}

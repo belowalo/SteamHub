@@ -1,0 +1,21 @@
+{
+  "repository": "huanyuejue/steam-monitor",
+  "commit": "c53bb228a0900122c7182548f50ec227b749f8f7",
+  "files": [
+    {
+      "path": "pattern/steamclient/669fa08e259277fbf5a1dfe15ce88afe734e89151194304b44d92f418dcc985b.toml",
+      "url": "https://raw.githubusercontent.com/huanyuejue/steam-monitor/c53bb228a0900122c7182548f50ec227b749f8f7/pattern/steamclient/669fa08e259277fbf5a1dfe15ce88afe734e89151194304b44d92f418dcc985b.toml",
+      "originalSha256": "7e471686ac7f0bf02f9e6b68187ba33987236a66bcb550efa747a2ab206990ec"
+    },
+    {
+      "path": "pattern/steamui/2dfb0a5d50dd90667549cc7d413c7bfb0794c9af4ebaf08bf1cf7d938a11ea93.toml",
+      "url": "https://raw.githubusercontent.com/huanyuejue/steam-monitor/c53bb228a0900122c7182548f50ec227b749f8f7/pattern/steamui/2dfb0a5d50dd90667549cc7d413c7bfb0794c9af4ebaf08bf1cf7d938a11ea93.toml",
+      "originalSha256": "12e7404c4a51507e21882b8e3f088b1d8c2dfcc2887468ab56cb86fb2a2c48d5"
+    },
+    {
+      "path": "ipc/steamclient/669fa08e259277fbf5a1dfe15ce88afe734e89151194304b44d92f418dcc985b.toml",
+      "url": "https://raw.githubusercontent.com/huanyuejue/steam-monitor/c53bb228a0900122c7182548f50ec227b749f8f7/ipc/steamclient/669fa08e259277fbf5a1dfe15ce88afe734e89151194304b44d92f418dcc985b.toml",
+      "originalSha256": "f4cb4ee88b91c000d67112f9f56a901aecf6e789cd41e8a76a7171c394b99453"
+    }
+  ]
+}

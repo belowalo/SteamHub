@@ -1,12 +1,12 @@
-SteamHub 0.1.3 bundles the new add-game progress, savings estimate and reversible Lua removal features.
+SteamHub 0.1.4 includes the November 14 SteamTools restoration and current Steam compatibility files.
 
-- Add-game progress shows price checking, live provider attempts, skipped credentials, failures, file installation and Steam restart guidance. Failed adds offer retry, source configuration and file import. Installed-file details and warnings are available after success.
-- Money saved appears below Add a game. It estimates the current discounted Steam value of detected Lua-added apps in the selected store country. Each AppID is counted once, currencies stay separate, and unavailable prices are excluded with pricing coverage shown. This is not a historical purchase-price or lifetime-savings record.
-- Remove Lua entry is available for Lua-added games in grid and table views. It previews matching files, requires confirmation and Steam to be closed, preserves inactive backups, and provides persistent undo history. Shared/custom scripts that cannot be safely classified are blocked. Edited backups and occupied restore paths stop undo.
-- Game installations, manifests and runtime files are retained during Lua removal. Restart Steam to apply removal or restoration; games you own remain available.
+- Adds reviewed compatibility data for Steam stable build 1794536281, selected by the exact steamclient64.dll and SteamUI.dll SHA-256 hashes.
+- The PowerShell installer restores missing reviewed runtime DLLs and installs the matching compatibility files when Steam is closed. Existing matching DLLs are retained; different runtime DLLs are preserved and reported as conflicts.
+- Keeps support for the previously reviewed Steam builds and preserves existing Lua files, provider keys, profiles and runtime configuration.
+- Includes all 0.1.3 features: add-game progress/recovery, the current-price savings estimate, and reversible Lua removal.
 
-Includes the prior UI layout update, reviewed runtime and November Steam compatibility repair. Run the same PowerShell updater command to get this release. Local profiles, keys and existing Lua files are not included in the release.
+The added metadata was validated against the installed DLLs: 34 unique hook signatures and six IPC vtable pointers/wrapper constants matched. On the repaired PC, the three missing runtime DLLs and three matching TOMLs were restored; Steam restarted with OpenSteamTool loaded and no compatibility warning dialogs. All 91 recorded Lua/config files remained unchanged. Game launches and downloads were not tested.
 
-Validation covers frontend tests and Rust tests, including temporary removal/undo fixtures, edit conflicts, shared scripts and damaged history records. Live read-only checks verified pricing coverage and failed-provider recovery. No real game was removed for testing. Full search/add/restart/remove/undo behavior in Steam has not been tested end to end.
+Metadata source is pinned to huanyuejue/steam-monitor commit c53bb228a0900122c7182548f50ec227b749f8f7. Two hook names were normalized for the reviewed moxuna v1.4.8-fix runtime, and the unused GetTopManager hook was omitted. Audit records are included in the source archive and repository compatibility folder.
 
-Windows 10/11 x64 is required. Builds are unsigned. The updater installs runtime files only for reviewed Steam DLL hashes. Removal backups require a filesystem supporting same-directory hard links. Corresponding application/runtime source, licenses, dependencies and checksums are included.
+Run the existing PowerShell installer command again to obtain this update. Windows 10/11 x64 and an installed Steam client are required for integration setup. Unsupported Steam hashes receive the app update with a compatibility warning. This release does not diagnose a separate bootstrap/network error on another PC; the exact error is still needed if that occurs. Builds are unsigned; corresponding runtime/application source, dependency notices and checksums are included.
