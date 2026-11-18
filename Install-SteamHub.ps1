@@ -151,6 +151,10 @@ function Install-SHDependencies([string]$Root) {
         if ($process.ExitCode -eq 3010) { Write-Warning 'Windows needs a restart to complete dependency installation.' }
     }
 }
+function Get-SHDesktopShortcutPath {
+    $desktop=[Environment]::GetFolderPath('Desktop')
+    if ($desktop) { Join-Path $desktop 'SteamHub.lnk' }
+}
 function Restore-SHBackup([string]$Root,[string]$Backup) {
     $container=Get-SHChild $Root 'backups'
     $backupRoot=[IO.Path]::GetFullPath($Backup).TrimEnd('\')
@@ -159,12 +163,12 @@ function Restore-SHBackup([string]$Root,[string]$Backup) {
     $state=Get-Content -LiteralPath (Join-Path $backupRoot 'transaction.json') -Raw | ConvertFrom-Json
     if ($state.installRoot -ne $Root -or $state.schemaVersion -ne 1) { throw 'Backup belongs to another installation.' }
     if ($state.steamRoot -and (Test-SHSteamRunning $state.steamRoot)) { throw 'Exit Steam completely before restoring.' }
+    $desktopShortcut=Get-SHDesktopShortcutPath
     $seen=@{}
     foreach ($r in $state.records) {
         $path=[IO.Path]::GetFullPath($r.target)
         $appRoot=Get-SHChild $Root 'versions'
-        $desktop=Join-Path ([Environment]::GetFolderPath('Desktop')) 'SteamHub.lnk'
-        $valid=$path.StartsWith($appRoot+'\',[StringComparison]::OrdinalIgnoreCase) -or $path -eq (Get-SHChild $Root 'installed.json') -or $path -eq $desktop
+        $valid=$path.StartsWith($appRoot+'\',[StringComparison]::OrdinalIgnoreCase) -or $path -eq (Get-SHChild $Root 'installed.json') -or $path -eq $desktopShortcut
         if (-not $valid -and $state.steamRoot) {
             $prefix=$state.steamRoot.TrimEnd('\')+'\'
             if ($path.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)) {
@@ -223,12 +227,17 @@ function Install-SHVerifiedPackage([string]$Root,$Manifest,[string]$InstallRoot,
     }
     if ($SteamRoot -and $runtimeReady -and (Test-SHSteamRunning $SteamRoot)) { throw 'Steam reopened during preparation; close it and retry.' }
     if (-not $NoShortcut) {
-        $desktop=[Environment]::GetFolderPath('Desktop')
-        if ($desktop) {
-            $tempLink=Join-Path $Root 'SteamHub.lnk'
-            $shell=New-Object -ComObject WScript.Shell
-            $link=$shell.CreateShortcut($tempLink); $link.TargetPath=Join-Path $versionRoot 'SteamHub.exe'; $link.WorkingDirectory=$versionRoot; $link.Description='SteamHub'; $link.Save()
-            [void]$plan.Add(@{target=(Join-Path $desktop 'SteamHub.lnk');bytes=[IO.File]::ReadAllBytes($tempLink)})
+        try {
+            $desktopShortcut=Get-SHDesktopShortcutPath
+            if ($desktopShortcut) {
+                Assert-SHPath $desktopShortcut
+                $tempLink=Join-Path $Root 'SteamHub.lnk'
+                $shell=New-Object -ComObject WScript.Shell
+                $link=$shell.CreateShortcut($tempLink); $link.TargetPath=Join-Path $versionRoot 'SteamHub.exe'; $link.WorkingDirectory=$versionRoot; $link.Description='SteamHub'; $link.Save()
+                [void]$plan.Add(@{target=$desktopShortcut;bytes=[IO.File]::ReadAllBytes($tempLink)})
+            }
+        } catch {
+            Write-Warning "Skipping the desktop shortcut. $($_.Exception.Message)"
         }
     }
     $installed=@{version=$Manifest.version;executable=(Join-Path $versionRoot 'SteamHub.exe');steamRoot=$SteamRoot;updatedAt=[DateTime]::UtcNow.ToString('o')}

@@ -8,7 +8,7 @@ Windows 10/11 x64. Open the regular **Windows PowerShell** app and paste:
 
 This executes the published installer script. [Read the script first](https://github.com/belowalo/SteamHub/blob/main/Install-SteamHub.ps1). No execution-policy or antivirus changes are required. Run the same command again to get the latest published stable release. GitHub sign-in is not needed.
 
-The updater downloads `SteamHub-update.zip`, verifies GitHub's SHA-256 digest and every payload file, installs Microsoft WebView2 / Visual C++ x64 only if needed, and places SteamHub in `%LOCALAPPDATA%\SteamHub\versions\<version>`. It creates a desktop shortcut. Microsoft installers may request administrator approval; a required reboot is reported.
+The updater downloads `SteamHub-update.zip`, verifies GitHub's SHA-256 digest and every payload file, installs Microsoft WebView2 / Visual C++ x64 only if needed, and places SteamHub in `%LOCALAPPDATA%\SteamHub\versions\<version>`. It creates a desktop shortcut when the Desktop is a regular folder. If Windows marks it as a linked folder, the updater skips the shortcut and prints the installed executable path. Microsoft installers may request administrator approval; a required reboot is reported.
 
 Steam must already be installed. The updater finds it in the registry, waits for you to exit it, and installs the reviewed bundled OpenSteamTool runtime plus hash-matched compatibility metadata. Another runtime DLL stops installation rather than being overwritten. A Steam build with no reviewed metadata receives the app update only, with a warning. Provider keys, profiles, Lua files and website logins stay on each PC. No provider key is included.
 
@@ -16,7 +16,7 @@ Existing NSIS/portable installations are retained; the new desktop shortcut open
 
 ## Options
 
-Download `Install-SteamHub.ps1` from the release if you want a local copy. On systems allowing local scripts:
+Download the [current installer script](https://github.com/belowalo/SteamHub/blob/main/Install-SteamHub.ps1) if you want a local copy. On systems allowing local scripts:
 
 ```powershell
 .\Install-SteamHub.ps1 -CheckOnly
