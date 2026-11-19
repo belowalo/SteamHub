@@ -1,12 +1,12 @@
-SteamHub 0.1.4 includes the November 14 SteamTools restoration and current Steam compatibility files.
+SteamHub 0.1.5 repairs Online Fixes installation for games with nested executable folders.
 
-- Adds reviewed compatibility data for Steam stable build 1794536281, selected by the exact steamclient64.dll and SteamUI.dll SHA-256 hashes.
-- The PowerShell installer restores missing reviewed runtime DLLs and installs the matching compatibility files when Steam is closed. Existing matching DLLs are retained; different runtime DLLs are preserved and reported as conflicts.
-- Keeps support for the previously reviewed Steam builds and preserves existing Lua files, provider keys, profiles and runtime configuration.
-- Includes all 0.1.3 features: add-game progress/recovery, the current-price savings estimate, and reversible Lua removal.
+- Matches the fix package's binary paths against installed game folders and shows the detected destination during review.
+- Backs up the original DLL in the correct folder. Ambiguous destinations and locations changed after review are rejected.
+- Detects legacy wrong-folder installations while retaining Undo recovery.
+- Includes the PowerShell installer fix for linked/OneDrive Desktops. An unsupported desktop shortcut is skipped so installation can continue.
 
-The added metadata was validated against the installed DLLs: 34 unique hook signatures and six IPC vtable pointers/wrapper constants matched. On the repaired PC, the three missing runtime DLLs and three matching TOMLs were restored; Steam restarted with OpenSteamTool loaded and no compatibility warning dialogs. All 91 recorded Lua/config files remained unchanged. Game launches and downloads were not tested.
+Validation: six Rust fix-install tests and five Online Fixes UI tests passed, along with TypeScript, production frontend build, and targeted ESLint. The real Slay the Spire 2 fix was installed through SteamHub on build 26655341 / game version 0.111.1. The game loaded all four fix DLLs and successfully created a standard multiplayer lobby. Joining from a second PC was not tested. All unrelated original game-file hashes matched the baseline.
 
-Metadata source is pinned to huanyuejue/steam-monitor commit c53bb228a0900122c7182548f50ec227b749f8f7. Two hook names were normalized for the reviewed moxuna v1.4.8-fix runtime, and the unused GetTopManager hook was omitted. Audit records are included in the source archive and repository compatibility folder.
+How to Fish installation, module loading, and Undo were tested. Its original game also failed to launch with Steam error 54, so multiplayer for that game remains unverified. Some fix packages rewrite OnlineFix.ini at launch; the strict file verifier can consequently report changed files and Undo may need manual review of that configuration.
 
-Run the existing PowerShell installer command again to obtain this update. Windows 10/11 x64 and an installed Steam client are required for integration setup. Unsupported Steam hashes receive the app update with a compatibility warning. This release does not diagnose a separate bootstrap/network error on another PC; the exact error is still needed if that occurs. Builds are unsigned; corresponding runtime/application source, dependency notices and checksums are included.
+Includes the reviewed runtime compatibility data from 0.1.4. Provider keys, profiles, game files, and downloaded third-party fix packages are excluded. Windows builds are unsigned. Rerun the existing PowerShell command to install this release.
