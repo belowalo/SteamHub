@@ -12,7 +12,7 @@ The updater downloads `SteamHub-update.zip`, verifies GitHub's SHA-256 digest an
 
 Steam must already be installed. The updater finds it in the registry, waits for you to exit it, and installs the reviewed bundled OpenSteamTool runtime plus hash-matched compatibility metadata. Another runtime DLL stops installation rather than being overwritten. A Steam build with no reviewed metadata receives the app update only, with a warning. Provider keys, profiles, Lua files and website logins stay on each PC. No provider key is included.
 
-Existing NSIS/portable installations are retained; the new desktop shortcut opens the updater-managed copy. Both use the same current-user SteamHub profile. The updater never imports another PC's profile or keychain. This is an on-demand updater, not a background service. Future fixes require publishing a new reviewed release; this cannot manufacture unknown Steam compatibility data.
+Existing NSIS/portable installations are retained; the new desktop shortcut opens the updater-managed copy. Both use the same current-user SteamHub profile. The updater never imports another PC's profile or keychain. After this bootstrap update, SteamHub checks for signed app updates on launch and installs a pending update on exit or restart. A separate signed compatibility feed checks matching upstream Steam metadata every six hours and delivers it when Steam closes. Unknown builds still require matching upstream data; incompatible runtime changes require a new app release.
 
 ## Options
 
@@ -40,6 +40,6 @@ python scripts/refresh-production.py
 python scripts/package-update.py
 ```
 
-Publish the installer script, update ZIP, production ZIP, source ZIP, NSIS installer and checksums as a stable GitHub release with a matching `v<version>` tag. Publish all assets in a draft first, then make it latest. Never upload app-data folders, credential exports, logs or personal Lua files. The public release repository stores the installer; full corresponding app source is included as `SteamHub-source.zip` with every release.
+Publish the installer script, update ZIP, production ZIP, source ZIP, NSIS installer and checksums as a stable GitHub release with a matching `v<version>` tag. Publish all assets in a draft first, then make it latest. Never upload app-data folders, credential exports, logs or personal Lua files. The repository includes the application source and update workflows. Full corresponding source and dependency notices are also included as `SteamHub-source.zip` with every release.
 
-SteamHub builds are unsigned. Checksums establish download integrity relative to the GitHub publisher; they are not an independent malware audit. OpenSteamTool's GPL license and corresponding source are included with the application. New Steam releases may require different metadata or runtime code.
+App updates and compatibility metadata use a pinned Minisign public key. Windows executables are not Authenticode signed. Checksums establish download integrity relative to the GitHub publisher; they are not an independent malware audit. OpenSteamTool's GPL license and corresponding source are included with the application. New Steam releases may require different metadata or runtime code.

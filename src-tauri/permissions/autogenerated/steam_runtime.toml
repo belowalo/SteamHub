@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-steam-runtime"
+description = "Enables the steam_runtime command without any pre-configured scope."
+commands.allow = ["steam_runtime"]
+
+[[permission]]
+identifier = "deny-steam-runtime"
+description = "Denies the steam_runtime command without any pre-configured scope."
+commands.deny = ["steam_runtime"]

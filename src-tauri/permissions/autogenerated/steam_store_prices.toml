@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-steam-store-prices"
+description = "Enables the steam_store_prices command without any pre-configured scope."
+commands.allow = ["steam_store_prices"]
+
+[[permission]]
+identifier = "deny-steam-store-prices"
+description = "Denies the steam_store_prices command without any pre-configured scope."
+commands.deny = ["steam_store_prices"]

@@ -1,0 +1,41 @@
+{
+  "steamclient": {
+    "0x82428E37": "BBuildAndAsyncSendFrame",
+    "0xC37F2D8E": "BuildDepotDependency",
+    "0xDB78B4AE": "BuildSpawnEnvBlock",
+    "0x64BF7C45": "CUtlBufferEnsureCapacity",
+    "0x2D945919": "CUtlMemoryGrow",
+    "0x4B1B1D77": "CheckAppOwnership",
+    "0x04691B23": "CloseAppCloud",
+    "0x6179E8F9": "ConfigStoreGetBinary",
+    "0xAC76B47D": "GetAppDataFromAppInfo",
+    "0xA185DB47": "GetAppIDForCurrentPipe",
+    "0xCC79542C": "GetOrAddAppData",
+    "0x3B3A0F9D": "GetPackageInfo",
+    "0x02DF23BC": "GetPipeClient",
+    "0xC3E20E29": "IPCProcessMessage",
+    "0x45A87956": "FindOrCreateKey",
+    "0x40679C34": "ReadAsBinary",
+    "0xB13C0C3F": "LoadDepotDecryptionKey",
+    "0x31E49927": "LoadPackage",
+    "0xC451039D": "MarkLicenseAsChanged",
+    "0x06631030": "OptedInMask",
+    "0x0F926D0A": "PchMsgNameFromEMsg",
+    "0x103B52AA": "ProcessPendingLicenseUpdates",
+    "0x836FF9F0": "RecvPkt",
+    "0x68211B4D": "SendCallbackToPipe",
+    "0x7D1EC415": "SpawnProcess"
+  },
+  "steamui": {
+    "0xD05E26A2": "AddProtobufAsBinary",
+    "0xE22F74B4": "BuildCompleteAppOverviewChange",
+    "0x221F0661": "CSteamUIAppControllerRunFrame",
+    "0xB030A061": "FillInAppOverview",
+    "0x3FC68546": "GetAppByID",
+    "0xBDE16BD6": "LoadModuleWithPath",
+    "0xC7D5CACF": "MarkAppChange",
+    "0x153479F0": "RepeatedFieldUint32_Add",
+    "0xD055D6C0": "ShouldShowAppInLibrary"
+  },
+  "runtimeSha256": "68269030c5d0375e56b7a651055e47413f9c11f3965e2e36dda54d1abcfc616f"
+}

@@ -1,0 +1,46 @@
+name: Publish signed Steam compatibility data
+on:
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: compatibility-feed
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - name: Prepare signing key
+        shell: pwsh
+        env:
+          SIGNING_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+        run: |
+          if (-not $env:SIGNING_KEY) { throw 'Configure TAURI_SIGNING_PRIVATE_KEY before enabling this workflow.' }
+          [IO.File]::WriteAllText("$env:RUNNER_TEMP/updater.key", $env:SIGNING_KEY)
+      - name: Normalize and sign compatible upstream metadata
+        shell: pwsh
+        run: python scripts/compatibility-feed.py --key "$env:RUNNER_TEMP/updater.key"
+      - name: Publish feed
+        shell: pwsh
+        run: |
+          git config user.name 'SteamHub compatibility automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -- compatibility/updates
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) { exit 0 }
+          git commit -m 'Publish signed Steam compatibility metadata'
+          git push
+      - name: Remove temporary signing key
+        if: always()
+        shell: pwsh
+        run: Remove-Item -LiteralPath "$env:RUNNER_TEMP/updater.key" -ErrorAction SilentlyContinue

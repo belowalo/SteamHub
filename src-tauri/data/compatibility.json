@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "appId": "1172470",
+      "reviewedAt": "2026-11-05",
+      "expiresAt": 1801785600,
+      "requirements": [
+        {"kind": "account", "detail": "Steam lists an EA account requirement.", "source": "https://store.steampowered.com/app/1172470/"},
+        {"kind": "anticheat", "detail": "Steam lists kernel-level EA Javelin Anticheat.", "source": "https://store.steampowered.com/app/1172470/"}
+      ]
+    }
+  ]
+}

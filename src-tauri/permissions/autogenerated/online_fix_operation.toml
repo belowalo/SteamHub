@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-online-fix-operation"
+description = "Enables the online_fix_operation command without any pre-configured scope."
+commands.allow = ["online_fix_operation"]
+
+[[permission]]
+identifier = "deny-online-fix-operation"
+description = "Denies the online_fix_operation command without any pre-configured scope."
+commands.deny = ["online_fix_operation"]

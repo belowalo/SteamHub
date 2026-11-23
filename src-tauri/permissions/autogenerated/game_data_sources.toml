@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-game-data-sources"
+description = "Enables the game_data_sources command without any pre-configured scope."
+commands.allow = ["game_data_sources"]
+
+[[permission]]
+identifier = "deny-game-data-sources"
+description = "Denies the game_data_sources command without any pre-configured scope."
+commands.deny = ["game_data_sources"]

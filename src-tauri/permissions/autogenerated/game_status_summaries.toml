@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-game-status-summaries"
+description = "Enables the game_status_summaries command without any pre-configured scope."
+commands.allow = ["game_status_summaries"]
+
+[[permission]]
+identifier = "deny-game-status-summaries"
+description = "Denies the game_status_summaries command without any pre-configured scope."
+commands.deny = ["game_status_summaries"]

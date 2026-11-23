@@ -1,0 +1,38 @@
+[package]
+name = "steamhub"
+version = "0.1.5"
+description = "SteamHub Windows desktop application"
+license = "MIT"
+edition = "2021"
+rust-version = "1.99"
+
+[lib]
+name = "steamhub_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.37", features = ["bundled"] }
+reqwest = { version = "0.13.5", features = ["json"] }
+rfd = "0.17.2"
+sha2 = "0.11.1"
+full_moon = "3.0.0"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+open = "5.4.5"
+tauri-plugin-updater = "2"
+base64 = "0.22"
+minisign-verify = "0.3"
+toml = "0.9"
+memchr = "2"
+
+[target.'cfg(windows)'.dependencies]
+winreg = "0.56"
+windows-sys = { version = "0.61.2", features = ["Win32_Security_Credentials"] }
+
+[dev-dependencies]
+tempfile = "3"
